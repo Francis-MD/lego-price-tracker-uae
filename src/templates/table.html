@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script
+      type="text/javascript"
+      language="javascript"
+      src="https://code.jquery.com/jquery-3.5.1.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"
+    />
+    <script
+      type="text/javascript"
+      language="javascript"
+      src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      language="javascript"
+      src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"
+    ></script>
+    <script type="text/javascript" language="javascript" class="init">
+      $(document).ready(function () {
+        $("#example").DataTable();
+      });
+    </script>
+    <!-- <link rel="stylesheet" href="/src/templates/index.css"> -->
+
+    <style>
+      #Filter{
+        display:inline-table ;
+        width: 18%;
+        margin: 1rem;
+        background-color: #445175;
+
+      }
+      .border_radius{
+        border-radius: 3%;
+
+      }
+      #example{
+        width: auto;
+    padding: 1rem;
+
+      }
+      .Filter_btn{
+        padding: 1rem  0;
+        pointer-events: click;
+        cursor: pointer;
+        color: #dfdfef;
+
+      }
+      body{
+        background-color: #3d486c;
+        color: #dfdfef;
+      }
+      .even_F{
+        background-color: #5d6c9e;
+      }
+      .odd_F{
+
+      }
+      .odd{
+        background-color: #364061 !important;
+        margin: 1rem !important;
+      }
+      .even{
+        margin: 1rem !important;
+        background-color: #3d486c !important;
+      }
+      .australia_colour{
+        background-color: #445175;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="Filter" class="text-center border_radius"  >
+      <div style="margin: 3%;">
+      <div class="border_radius">
+      <h3>
+        Go to Store
+      </h3>
+    </div>
+
+      <div >
+        
+        <div class="border_radius Filter_btn odd_F">Amazon.ae</div>
+        <div class="border_radius Filter_btn even_F">Noon.ae</div>
+        <div class="border_radius Filter_btn odd_F">Firstcry.ae</div>
+        <div class="border_radius Filter_btn even_F" >Toysrusmena.com</div>
+        <div class="border_radius Filter_btn odd_F">Lego.YellowBlocks.me</div>
+        <div class="border_radius Filter_btn even_F">Lego.Saudiblocks.com</div>
+      </div>
+    </div>
+    </div>
+      <div class="border_radius table_div australia_colour" style="display:inline-table ; width: 80%; padding: 1%;" >
+        <table
+          id="example"
+          class=""
+
+          style="color:#dfdfef ;"
+        >
+          <thead>
+            <tr>
+              <th>Product Number</th>
+              <th>Product Name</th>
+              <th>Super Segment</th>
+              <th>Super Theme</th>
+              <th>RRP AED</th>
+              <th>RRP SAR</th>
+              <th>amazon.ae</th>
+              <th>noon.ae</th>
+              <th>firstcry.ae</th>
+              <th>toysrusmena.com</th>
+              <th>lego.yellowblocks.me</th>
+              <th>lego.saudiblocks.com</th>
+            </tr>
+          </thead>
+          <tbody >
+            {% for product in products %}
+            <tr>
+              {% for key, value in product.items()%}
+              
+              {% if key == "amazon.ae" or key == "noon.ae" or key == "firstcry.ae" or key == "toysrusmena.com" or key == "lego.yellowblocks.me" or key == "lego.saudiblocks.com" %}
+                {% if product['RRP AED'] >= value %}
+                <td style="color: rgb(101, 221, 155);">{{value}}</td>
+                {% else %}
+                <td style="color: #F65164;">{{value}}</td>
+                {% endif %}
+              {% else %}
+                <td  style="color:#dfdfef ;" >{{value}}</td>
+              {% endif %}
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Product Number</th>
+              <th>Product Name</th>
+              <th>Super Segment</th>
+              <th>Super Theme</th>
+              <th>RRP AED</th>
+              <th>RRP SAR</th>
+              <th>amazon.ae</th>
+              <th>noon.ae</th>
+              <th>firstcry.ae</th>
+              <th>toysrusmena.com</th>
+              <th>lego.yellowblocks.me</th>
+              <th>lego.saudiblocks.com</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      
+    </div>
+    <script>
+      var base_url = 'http://127.0.0.1:8000/'
+$('.Filter_btn').click(function(e) {
+    var product_name = this.innerText
+    var index_profuct = 0
+    console.log(product_name);
+    window.location.href =base_url+ "?web_name=" + product_name
+  })
+    </script>
+  </body>
+</html>

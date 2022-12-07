@@ -1,0 +1,39 @@
+#Filter {
+    display: inline-table;
+    width: auto;  
+    border: 1px solid black;
+    width: 10%;
+    top: 0px;
+    margin-top: 1rem;
+}
+    
+.Filter_btn{
+    padding: 1rem  0;
+    pointer-events: click;
+    border: 0.5px solid black;
+    cursor: pointer;
+    width: 10%;
+
+}
+button {
+    background-color: none;
+
+}
+
+h1 {
+    color :aquamarine
+}
+
+
+.table_div{
+    display: inline-table !important;
+    position: static;
+    width: 89%;
+}
+
+.odd {
+    background-color: aqua !important;
+}
+.even {
+    background-color: bisque !important;
+}
