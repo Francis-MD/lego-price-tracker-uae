@@ -1,6 +1,6 @@
 from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
-
+import pdb
 import pandas as pd
 import os
 
@@ -39,7 +39,7 @@ def get_product_list() -> list:
         ).to_dict(orient="records")
 
         for i, product in enumerate(products):
-            product_number = product["Product Number"]
+            product_number = int(product["Product Number"])
             discount_price = _find_column_value(items, "discount_price", product_number)
             price = _find_column_value(items, "price", product_number)
 
@@ -53,6 +53,7 @@ def gen_html_table(products: list):
     env = Environment(loader=FileSystemLoader(f"{PROJECT_ROOT_DIR}/templates/"))
     template = env.get_template("table.html")
     print(products)
+
     html = template.render(products=products)
     with open("index.html", "w") as f:
         f.write(html)
