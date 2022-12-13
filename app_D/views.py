@@ -66,7 +66,7 @@ def get_product_list(product_id) -> list:
         for i in products:
             for _key in i:
                 if type(i[_key]) != str:
-                    i[_key] = float(i[_key])
+                    i[_key] = int(i[_key])
             final_product.append(i)
 
 
