@@ -88,3 +88,5 @@ def home(request):
     gen_html_table(products)
     return render(request, 'index.html')
 
+def airtableview(request):
+    return render(request,"airtableview.html")

@@ -32,7 +32,7 @@ class NoonAeScraper(scrapy.Spider):
     name = "noon.ae"
     custom_settings = {
         "CONCURRENT_REQUESTS": 1,
-        "DOWNLOAD_DELAY": 3,
+        "DOWNLOAD_DELAY": 1,
         "DOWNLOADER_MIDDLEWARES": {
             "scraper.middlewares.UserAgentMiddleware": 1000,
             HeadersMiddleware: 1100,

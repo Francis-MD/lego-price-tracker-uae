@@ -46,3 +46,4 @@ typing_extensions==4.4.0
 urllib3==1.26.12
 w3lib==2.0.1
 zope.interface==5.5.2
+airtable-python-wrapper==0.15.3
